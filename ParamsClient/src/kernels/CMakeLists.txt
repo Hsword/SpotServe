@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.8)
+
+add_library(matrix_transpose_kernels STATIC matrix_transpose_kernels.cu)
+set_property(TARGET matrix_transpose_kernels PROPERTY POSITION_INDEPENDENT_CODE  ON)
+set_property(TARGET matrix_transpose_kernels PROPERTY CUDA_RESOLVE_DEVICE_SYMBOLS  ON)

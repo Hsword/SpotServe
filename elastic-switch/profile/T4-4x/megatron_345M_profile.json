@@ -1,0 +1,106 @@
+{
+    "name": "megatron_345M_profile",
+    "layer_num": 24,
+    "padded_layer_num": 24,
+    "final_fix_factor": 1.1,
+    "pp_init_comm": 1.0,
+    "pp_incr_comm": 0.03,
+    "hidden_size": 1024,
+    "max_tp": 16,
+    "embed": [
+        0.283,
+        0.28,
+        0.338,
+        0.291
+    ],
+    "tp-1": {
+        "bsz-1": {
+            "init": 5.835,
+            "incr": 0.3
+        },
+        "bsz-2": {
+            "init": 7.101,
+            "incr": 0.293
+        },
+        "bsz-4": {
+            "init": 13.851,
+            "incr": 0.327
+        },
+        "bsz-8": {
+            "init": 28.293,
+            "incr": 0.416
+        }
+    },
+    "tp-2": {
+        "bsz-1": {
+            "init": 4.571,
+            "incr": 0.233
+        },
+        "bsz-2": {
+            "init": 8.767,
+            "incr": 0.3
+        },
+        "bsz-4": {
+            "init": 12.968,
+            "incr": 0.221
+        },
+        "bsz-8": {
+            "init": 20.175,
+            "incr": 0.277
+        }
+    },
+    "tp-4": {
+        "bsz-1": {
+            "init": 3.288,
+            "incr": 0.2
+        },
+        "bsz-2": {
+            "init": 6.405,
+            "incr": 0.28
+        },
+        "bsz-4": {
+            "init": 11.895,
+            "incr": 0.247
+        },
+        "bsz-8": {
+            "init": 16.978,
+            "incr": 0.196
+        }
+    },
+    "tp-8": {
+        "bsz-1": {
+            "init": 4.103,
+            "incr": 0.538
+        },
+        "bsz-2": {
+            "init": 6.526,
+            "incr": 0.567
+        },
+        "bsz-4": {
+            "init": 11.095,
+            "incr": 0.573
+        },
+        "bsz-8": {
+            "init": 17.531,
+            "incr": 0.674
+        }
+    },
+    "tp-16": {
+        "bsz-1": {
+            "init": 5.055,
+            "incr": 0.9
+        },
+        "bsz-2": {
+            "init": 7.647,
+            "incr": 0.944
+        },
+        "bsz-4": {
+            "init": 10.606,
+            "incr": 1.224
+        },
+        "bsz-8": {
+            "init": 16.62,
+            "incr": 1.338
+        }
+    }
+}

@@ -1,0 +1,8 @@
+#[0, "add", {"nodes": ["node-0"]}]
+[0, "add", {"nodes": ["node-0", "node-1", "node-2", "node-3", "node-4", "node-5", "node-6", "node-7"]}]
+[60000, "remove", {"nodes": ["node-5"]}]
+[120000, "remove", {"nodes": ["node-6", "node-7"]}]
+[180000, "remove", {"nodes": ["node-3"]}]
+[240000, "add", {"nodes": ["node-8", "node-9"]}]
+[300000, "add", {"nodes": ["node-10", "node-11"]}]
+[360000, "DONE", {"nodes": []}]

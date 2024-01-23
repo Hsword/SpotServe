@@ -1,10 +1,59 @@
-# SpotServe
+# SpotServe Artifact
 *SpotServe: Serving Generative Large Language Models on Preemptible Instances* [ASPLOS'24] [Paper Link](https://arxiv.org/abs/2311.15566)
 
-SpotServe is the first distributed LLM serving system on preemptible instances. Several key techniques in SpotServe realize fast and reliable serving of generative LLMs on cheap preemptible instances. First, SpotServe dynamically adapts the LLM parallelization configuration for dynamic instance availability and fluctuating workload, while balancing the trade-off among the overall throughput, inference latency and monetary costs. Second, to minimize the cost of migrating instances for dynamic reparallelization, the task of migrating instances is formulated as a bipartite graph matching problem, which uses the Kuhn-Munkres algorithm to identify an optimal migration plan that minimizes communications. Finally, to take advantage of the grace period offered by modern clouds, we introduce stateful inference recovery, a new inference mechanism that commits inference progress at a much finer granularity and allows SpotServe to cheaply resume inference upon preemption. We evaluate on real spot instance preemption traces and various popular LLMs and show that SpotServe can reduce the P99 tail latency by 2.4 - 9.1x compared with the best existing LLM serving systems. We also show that SpotServe can leverage the price advantage of preemptive instances, saving 54% monetary cost compared with only using on-demand instances.
+This is the artifact for SpotServe, including codes and scripts for reproducing all experiments in the paper. 
 
-We are still preparing artifact evalution and will release the code soon!
+**Note:** Detailed usage guides for each components are not included in the artifact branch. It will soon be available in the main branch.
 
+We require twelve network-accessible GPU instances, each with 4 NVIDIA Tesla T4 GPUs (e.g. AWS `g4dn.12xlarge`), all of which require CUDA, NCCL, MPI, Python dependencies to be installed.
+This artifact consists of three components: Global Server (i.e. Inference Server), Params Client (i.e. Context Daemon), and modified FasterTransformer (i.e. Inference Engine). The first component is written in Python, while the other two are in C++. Our provided scripts will automatically launch all of them to perform experiment.
+
+## Requirements
+
+### Hardware dependencies
+We conduct expertiments on twelve instances, each of them equipped with four NVIDIA Tesla T4 GPUs and `x86_64` CPU. All instances are connected with each other by TCP/IP with 50Mbps bandwidth.
+
+## Installation
+
+To install the artifact, users need to build ParamsClient and our modified FasterTransformer individually. It is recommended that compile the components on single instance and send them to other nodes by `rsync` command later (See Experiment workflow). 
+
+### Install FasterTransformer
+If dependencies are not statisfied, CMake will report the missing dependencies:
+```sh
+cd ./FasterTransformer
+mkdir build && cd build
+cmake -DSM=75 -DCMAKE_BUILD_TYPE=Release -DBUILD_MULTI_GPU=ON ..
+make multi_gpu_gpt_example_iter -j 8
+```
+
+### Install ParamsClient:
+```sh
+cd ./ParamsClient
+mkdir build && cd build
+cmake ..
+make -j 8
+```
+
+### Preparing Checkpoints
+Since we focus on the end-to-end latency, using randomized checkpoints is acceptable, we provide a python script to randomly generate model checkpoints. To save disk space, the first layer weights are the only generated files, all weights in succeeding layers are linked to the corresponding files of the first layer. Following command will generate checkpoint files for specified model that can be directly used by out system, available candidates of `model_name` are `6.7B, 20B, 30B`.
+```sh
+cd ./ckpt
+python generate_random_gpt_ckpt.py -o <model_name>
+```
+
+### Configure Environment
+These files are required to be configured:
+* `./elastic_switch/trace/hostfile_aws_T4`: The IP address of your instances, one entry each line, and at least 12 entries.
+* `./elastic_switch/scripts_ae/env.sh`: Set NIC, path to MPI, and your base directory. See its contents for details.
+
+### Sync Codes and Data
+Make sure that all nodes are accessible to each other, and the Hostfile has been configured. We provide a Python script to automatically send built components and checkpoints (optional) to all the instances. Please set base directory and the IP address where components are built in `sync_code.py`, and run following command:
+```sh
+python sync_code.py  --n 12 --sync-dataset -hostfile ./elastic-switch/trace/hostnameT4
+```
+
+## Experiment workflow
+Please set working directory to `./elastic-switch`, and follow `./elastic-switch/README.md` to conduct experiments.
 
 ```
 @article{asplos24spotserve,

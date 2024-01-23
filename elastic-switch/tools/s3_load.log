@@ -1,0 +1,33 @@
+cuda:0
+loading model.wpe.bin
+model.wpe.bin torch.Size([3145728]) cost 3.425692558288574s
+loading model.wte.bin
+model.wte.bin torch.Size([157286400]) cost 5.736490249633789s
+loading model.final_layernorm.bias.bin
+model.final_layernorm.bias.bin torch.Size([3072]) cost 0.1009817123413086s
+loading model.final_layernorm.weight.bin
+model.final_layernorm.weight.bin torch.Size([3072]) cost 0.06056642532348633s
+loading model.layers.0.input_layernorm.bias.bin
+model.layers.0.input_layernorm.bias.bin torch.Size([3072]) cost 0.0858297348022461s
+loading model.layers.0.input_layernorm.weight.bin
+model.layers.0.input_layernorm.weight.bin torch.Size([3072]) cost 0.08142566680908203s
+loading model.layers.0.attention.query_key_value.weight.0.bin
+model.layers.0.attention.query_key_value.weight.0.bin torch.Size([14155776]) cost 0.7449612617492676s
+loading model.layers.0.attention.query_key_value.bias.0.bin
+model.layers.0.attention.query_key_value.bias.0.bin torch.Size([9216]) cost 0.11273837089538574s
+loading model.layers.0.attention.dense.weight.0.bin
+model.layers.0.attention.dense.weight.0.bin torch.Size([4718592]) cost 0.48668360710144043s
+loading model.layers.0.attention.dense.bias.bin
+model.layers.0.attention.dense.bias.bin torch.Size([768]) cost 0.09480047225952148s
+loading model.layers.0.post_attention_layernorm.bias.bin
+model.layers.0.post_attention_layernorm.bias.bin torch.Size([3072]) cost 0.0703575611114502s
+loading model.layers.0.post_attention_layernorm.weight.bin
+model.layers.0.post_attention_layernorm.weight.bin torch.Size([3072]) cost 0.06750130653381348s
+loading model.layers.0.mlp.dense_h_to_4h.weight.0.bin
+model.layers.0.mlp.dense_h_to_4h.weight.0.bin torch.Size([18874368]) cost 1.0863652229309082s
+loading model.layers.0.mlp.dense_h_to_4h.bias.0.bin
+model.layers.0.mlp.dense_h_to_4h.bias.0.bin torch.Size([3072]) cost 0.09661221504211426s
+loading model.layers.0.mlp.dense_4h_to_h.weight.0.bin
+model.layers.0.mlp.dense_4h_to_h.weight.0.bin torch.Size([18874368]) cost 0.8966877460479736s
+loading model.layers.0.mlp.dense_4h_to_h.bias.bin
+model.layers.0.mlp.dense_4h_to_h.bias.bin torch.Size([3072]) cost 0.07249855995178223s

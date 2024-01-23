@@ -1,0 +1,63 @@
+{
+    "name": "opt-345M",
+    "layer_num": 24,
+    "padded_layer_num": 24,
+    "embed": [0.128, 0.136, 0.14, 0.168],
+    "final_fix_factor": 1.1,
+    "pp_init_comm": 5.0,
+    "pp_incr_comm": 0.1,
+    "tp-1":{
+        "bsz-1":{
+            "init": 1.535,
+            "incr": 0.13
+        },
+        "bsz-2":{
+            "init": 2.948,
+            "incr": 0.151
+        },
+        "bsz-4":{
+            "init": 5.261,
+            "incr": 0.158
+        },
+        "bsz-8":{
+            "init": 9.78,
+            "incr": 0.177
+        }
+    },
+    "tp-2":{
+        "bsz-1":{
+            "init": 1.103,
+            "incr": 0.147
+        },
+        "bsz-2":{
+            "init": 2.084,
+            "incr": 0.158
+        },
+        "bsz-4":{
+            "init": 4.067,
+            "incr": 0.167
+        },
+        "bsz-8":{
+            "init": 7.474,
+            "incr": 0.176
+        }
+    },
+    "tp-4":{
+        "bsz-1":{
+            "init": 0.698,
+            "incr": 0.099
+        },
+        "bsz-2":{
+            "init": 1.217,
+            "incr": 0.136
+        },
+        "bsz-4":{
+            "init": 2.078,
+            "incr": 0.139
+        },
+        "bsz-8":{
+            "init": 3.755,
+            "incr": 0.145
+        }
+    }
+}
