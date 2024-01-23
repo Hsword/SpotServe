@@ -1,0 +1,2 @@
+[0, "add", {"nodes": ["node-0", "node-1", "node-2", "node-3"]}]
+[1020000, "DONE", {"nodes": []}]

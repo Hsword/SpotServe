@@ -1,0 +1,8 @@
+add_executable(check_param check_param.cc)
+target_link_libraries(check_param memory_utils matrix_transpose_kernels)
+
+add_executable(check_transpose check_transpose.cc)
+target_link_libraries(check_transpose memory_utils matrix_transpose_kernels)
+
+add_executable(check_p2p_comm check_p2p_comm.cc)
+target_link_libraries(check_p2p_comm memory_utils nccl_utils mpi_utils)
