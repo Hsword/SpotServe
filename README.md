@@ -11,7 +11,10 @@ This artifact consists of three components: Global Server (i.e. Inference Server
 ## Requirements
 
 ### Hardware dependencies
-We conduct expertiments on twelve instances, each of them equipped with four NVIDIA Tesla T4 GPUs and `x86_64` CPU. All instances are connected with each other by TCP/IP with 50Mbps bandwidth.
+We conduct expertiments on twelve AWS `g4dn.12xlarge` instances, each of them equipped with four NVIDIA Tesla T4 GPUs and `x86_64` CPU. All instances are connected with each other by TCP/IP with 50Gbps bandwidth.
+
+### Software dependencies
+Following toolkits are required: CUDA>=10.2, NCCL>=2.10, MPI, and CMake>=3.8 is highly recommended for building the components.
 
 ## Installation
 
