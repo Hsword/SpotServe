@@ -52,6 +52,9 @@ def gen_ckpt(output_dir):
         (hidden_units,),
         (hidden_units,)
     ]
+    
+    if not os.path.exists(output_dir):
+        os.mkdir(output_dir)
 
     for shape, name in zip(size_non_block, non_block_name):
         a = np.random.normal(size=shape).astype(np.float32)
